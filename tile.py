@@ -17,9 +17,12 @@ class Tile:
         if status == constants.TILE_STATUS_ACTIVE:
             self.status = constants.TILE_STATUS_ACTIVE
             self.color = constants.RED
-        # elif status == constants.TILE_STATUS_CURRENT:
-        #     self.status = constants.TILE_STATUS_CURRENT
-        #     self.color = constants.BLUE
+        elif status == constants.TILE_STATUS_START:
+            self.status = constants.TILE_STATUS_START
+            self.color = constants.WHITE
+        elif status == constants.TILE_STATUS_FINISH:
+            self.status = constants.TILE_STATUS_FINISH
+            self.color = constants.BLACK
     
     def render(self, screen):
         pygame.draw.rect(screen, self.color, self.shape)
