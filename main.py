@@ -1,7 +1,7 @@
 import pygame
 import time
 
-from constants import *
+import constants
 from grid_tile import GridTile
 
 def eventHandler():
@@ -15,22 +15,35 @@ def render():
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("A* Pathfinding")
+    screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
+    pygame.display.set_caption(constants.CAPTION_PROJECT)
 
-    screen.fill(GREY)
+    screen.fill(constants.GREY)
 
-    grid_tile = GridTile(TILES_NUMBER, TILES_NUMBER)
-    grid_tile.render(screen)
+    grid_tile = GridTile(constants.TILES_NUMBER, constants.TILES_NUMBER)
+
+    # Set the player
+    player_pos = [0, 0]
+    grid_tile.updateTile(player_pos[0], player_pos[1], constants.TILE_STATUS_ACTIVE)
 
     # Main Loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    player_pos[0] -= 1
+                elif event.key == pygame.K_RIGHT:
+                    player_pos[0] += 1
+                elif event.key == pygame.K_UP:
+                    player_pos[1] -= 1
+                elif event.key == pygame.K_DOWN:
+                    player_pos[1] += 1
+                grid_tile.updateTile(player_pos[0], player_pos[1], constants.TILE_STATUS_ACTIVE)
 
+        grid_tile.render(screen)
         pygame.display.flip()
-        # time.sleep(.500)
 
 if __name__ == '__main__':
     main()
