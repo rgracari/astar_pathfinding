@@ -7,11 +7,13 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 GREY = (100, 100, 100)
+LIGHT_GREY = (150, 150, 150)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+BROWN = (101, 67, 33)
 
 # Tile config
-TILE_BORDER_SIZE = 5
+TILE_BORDER_SIZE = 1
 
 # Status tile
 TILE_STATUS_START = "start"
@@ -19,3 +21,4 @@ TILE_STATUS_FINISH = "finish"
 TILE_STATUS_DEFAULT = "default"
 TILE_STATUS_ACTIVE = "active"
 TILE_STATUS_CURRENT = "current"
+TILE_STATUS_BLOCK = "block"
