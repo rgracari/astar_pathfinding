@@ -13,10 +13,13 @@ class Tile:
         self.status = status
         self.shape = pygame.Rect(self.y, self.x, self.width, self.height)
     
-    def setActive(self, status):
-        if self.status == constants.TILE_STATUS_START:
+    def setStatus(self, status):
+        if status == constants.TILE_STATUS_DEFAULT:
+            self.status = constants.TILE_STATUS_DEFAULT
+            self.color = constants.GREEN
+        elif self.status == constants.TILE_STATUS_START:
             return
-        if self.status == constants.TILE_STATUS_FINISH:
+        elif self.status == constants.TILE_STATUS_FINISH:
             return
         elif status == constants.TILE_STATUS_ACTIVE:
             self.status = constants.TILE_STATUS_ACTIVE

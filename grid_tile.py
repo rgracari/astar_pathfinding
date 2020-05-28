@@ -23,5 +23,10 @@ class GridTile:
             for tile in self.tiles[line]:
                 tile.render(screen)
 
+    def clearTiles(self):
+        for line in range(0, len(self.tiles)):
+            for tile in self.tiles[line]:
+                tile.setStatus(constants.TILE_STATUS_DEFAULT)
+
     def updateTile(self, x, y, status):
-        self.tiles[x][y].setActive(status)
+        self.tiles[x][y].setStatus(status)

@@ -20,7 +20,7 @@ def main():
 
     screen.fill(constants.GREY)
 
-    game = Game(20, 20, [0, 0], [19, 19])
+    game = Game()
 
     # Main Loop
     while True:
@@ -30,8 +30,8 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
                     game.draw_path()
-                elif event.key == pygame.K_f:
-                    game.draw_path()
+                elif event.key == pygame.K_r:
+                    game.set_random_game()
 
         game.render(screen)
         pygame.display.flip()
