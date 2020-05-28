@@ -32,6 +32,10 @@ def main():
                     game.draw_path()
                 elif event.key == pygame.K_r:
                     game.set_random_game()
+                elif event.key == pygame.K_UP:
+                    game.draw_one_step_forward_path()
+                elif event.key == pygame.K_DOWN:
+                    game.draw_one_step_backward_path()
 
         game.render(screen)
         pygame.display.flip()

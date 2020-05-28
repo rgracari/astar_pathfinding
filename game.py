@@ -15,23 +15,36 @@ class Game:
         self.set_game()
 
     def find_path(self):
-        return Finder.find_path_static(self.grid_tile.tiles, self.start, self.finish)
+        self.path = Finder.find_path_static(self.grid_tile.tiles, self.start, self.finish)
 
     def draw_path(self):
-        path = self.find_path()
-        for step in path:
+        for step in self.path:
             self.grid_tile.updateTile(step[0], step[1], constants.TILE_STATUS_ACTIVE)
+    
+    def draw_one_step_forward_path(self):
+        if self.path_step < len(self.path) - 2:
+            self.path_step += 1
+            next_tile = self.path[self.path_step]
+            self.grid_tile.updateTile(next_tile[0], next_tile[1], constants.TILE_STATUS_ACTIVE)
+
+    def draw_one_step_backward_path(self):
+        if self.path_step > 0:
+            current_tile = self.path[self.path_step]
+            self.grid_tile.updateTile(current_tile[0], current_tile[1], constants.TILE_STATUS_DEFAULT)
+            self.path_step -= 1
 
     def set_random_game(self):
         self.start = [round(random()*self.tiles_witdh-1), round(random()*self.tiles_height-1)]
         self.finish = [round(random()*self.tiles_witdh-1), round(random()*self.tiles_height-1)]
         self.grid_tile.clearTiles()
-        self.grid_tile.updateTile(self.start[0], self.start[1], constants.TILE_STATUS_START)
-        self.grid_tile.updateTile(self.finish[0], self.finish[1], constants.TILE_STATUS_FINISH)
+        self.set_game()
 
     def set_game(self):
         self.grid_tile.updateTile(self.start[0], self.start[1], constants.TILE_STATUS_START)
         self.grid_tile.updateTile(self.finish[0], self.finish[1], constants.TILE_STATUS_FINISH)
+        self.path = []
+        self.path_step = 0
+        self.find_path()
 
     def render(self, screen):
         self.grid_tile.render(screen)
