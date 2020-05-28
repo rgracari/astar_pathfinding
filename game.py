@@ -1,3 +1,4 @@
+import pygame
 from random import random
 
 import constants
@@ -54,10 +55,3 @@ class Game:
 
     def render(self, screen):
         self.grid_tile.render(screen)
-
-
-# # Set the player
-# player_pos = [0, 0]
-# grid_tile.updateTile(player_pos[0], player_pos[1], constants.TILE_STATUS_ACTIVE)
-
-
