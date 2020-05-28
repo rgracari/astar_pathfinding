@@ -20,23 +20,18 @@ def main():
 
     screen.fill(constants.GREY)
 
-    game = Game(10, 10, (0, 0), (9, 9))
+    game = Game(20, 20, [0, 0], [19, 19])
 
     # Main Loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            # elif event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_LEFT:
-            #         player_pos[0] -= 1
-            #     elif event.key == pygame.K_RIGHT:
-            #         player_pos[0] += 1
-            #     elif event.key == pygame.K_UP:
-            #         player_pos[1] -= 1
-            #     elif event.key == pygame.K_DOWN:
-            #         player_pos[1] += 1
-            #     grid_tile.updateTile(player_pos[0], player_pos[1], constants.TILE_STATUS_ACTIVE)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_f:
+                    game.draw_path()
+                elif event.key == pygame.K_f:
+                    game.draw_path()
 
         game.render(screen)
         pygame.display.flip()

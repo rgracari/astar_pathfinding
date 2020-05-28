@@ -1,5 +1,7 @@
 import constants
+
 from grid_tile import GridTile
+from finder import Finder
 
 class Game:
     def __init__(self, tiles_witdh, tiles_height, start, finish):
@@ -9,7 +11,12 @@ class Game:
         self.set_game()
 
     def find_path(self):
-        pass
+        return Finder.find_path_static(self.grid_tile.tiles, self.start, self.finish)
+
+    def draw_path(self):
+        path = self.find_path()
+        for step in path:
+            self.grid_tile.updateTile(step[0], step[1], constants.TILE_STATUS_ACTIVE)
 
     def set_game(self):
         self.grid_tile.updateTile(self.start[0], self.start[1], constants.TILE_STATUS_START)
