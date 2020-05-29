@@ -31,14 +31,10 @@ def main():
                     data = MapManager.load_map_from_file(2)
                 elif event.key == pygame.K_KP3:
                     data = MapManager.load_map_from_file(3)
-                # elif event.key == pygame.K_f:
-                #     while True:
-                #         next_step, isEnd = Finder.find_next_path_static(data)
-                #         if isEnd:
-                #             break
-                #         data = MapManager.add_path_to_map(next_step, data)
-                #         renderer.render(screen, data)
-                #         time.sleep(0.5)
+                elif event.key == pygame.K_KP4:
+                    data = MapManager.load_map_from_file(4)
+                elif event.key == pygame.K_f:
+                    Finder.find_path_with_astar(data)
 
         renderer.render(screen, data)
         pygame.display.flip()

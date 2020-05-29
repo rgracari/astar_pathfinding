@@ -22,7 +22,5 @@ class Tile:
             return constants.BROWN
         elif status == constants.STATUS_DEFAULT:
             return constants.LIGHT_GREY
-        elif status == constants.STATUS_PATH:
-            return constants.BLUE
         else:
             return constants.LIGHT_GREY
