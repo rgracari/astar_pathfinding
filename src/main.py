@@ -34,7 +34,8 @@ def main():
                 elif event.key == pygame.K_KP4:
                     data = MapManager.load_map_from_file(4)
                 elif event.key == pygame.K_f:
-                    Finder.find_path_with_astar(data)
+                    res = Finder.find_path_with_astar(data)
+                    print(res)
 
         renderer.render(screen, data)
         pygame.display.flip()
