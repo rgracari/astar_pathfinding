@@ -33,9 +33,11 @@ def main():
                     data = MapManager.load_map_from_file(3)
                 elif event.key == pygame.K_KP4:
                     data = MapManager.load_map_from_file(4)
+                elif event.key == pygame.K_KP5:
+                    data = MapManager.load_map_from_file(5)
                 elif event.key == pygame.K_f:
-                    res = Finder.find_path_with_astar(data)
-                    print(res)
+                    steps = Finder.find_path_with_astar(data)
+                    data = MapManager.draw_path_with_steps(data, steps)
 
         renderer.render(screen, data)
         pygame.display.flip()

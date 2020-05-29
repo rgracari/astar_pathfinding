@@ -12,8 +12,7 @@ class Renderer:
         tiles = self.transform_data_to_tiles(data)
         for line in tiles:
             for tile in line:
-                pygame.draw.rect(screen, tile.color, tile.shape)
-                pygame.draw.rect(screen, constants.TILE_BORDER_COLOR, tile.shape, constants.TILE_BORDER_SIZE)
+                tile.render(screen)
 
     def transform_data_to_tiles(self, data):
         nbTileHeight = len(data) 

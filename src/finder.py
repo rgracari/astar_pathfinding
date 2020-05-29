@@ -1,6 +1,7 @@
 import constants
 from node import Node
 
+
 class Finder:
 
     @staticmethod
@@ -8,8 +9,10 @@ class Finder:
         height = len(data)
         width = len(data[0])
 
-        start = Finder.find_item_by_status(data, constants.STATUS_START, height, width)
-        end = Finder.find_item_by_status(data, constants.STATUS_FINISH, height, width)
+        start = Finder.find_item_by_status(
+            data, constants.STATUS_START, height, width)
+        end = Finder.find_item_by_status(
+            data, constants.STATUS_FINISH, height, width)
 
         start_node = Node(None, start)
         end_node = Node(None, end)
@@ -21,11 +24,13 @@ class Finder:
 
         while True:
             current_node = open_list[0]
+            current_index = 0
             for index, node in enumerate(open_list):
                 if current_node.f > node.f:
-                    current_node = node 
+                    current_node = node
+                    current_index = index
 
-            open_list.pop(index)
+            open_list.pop(current_index)
             closed_list.append(current_node)
 
             # !! to test !!
@@ -42,10 +47,10 @@ class Finder:
             for new_position in [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [-1, 1], [1, -1], [1, 1]]:
                 # If it is not walkable or if it is on the closed list, ignore it. Otherwise do the following.
                 # c'est bien dans la zone
-                
+
                 # c'est ça qu'on test
-                neighbour_new_position = [current_node.position[0] + new_position[0], current_node.position[1] + new_position[1]]
-                
+                neighbour_new_position = [
+                    current_node.position[0] + new_position[0], current_node.position[1] + new_position[1]]
                 if neighbour_new_position[0] < 0 or neighbour_new_position[1] < 0:
                     continue
                 if neighbour_new_position[0] >= len(data) or neighbour_new_position[1] >= len(data[0]):
@@ -59,16 +64,20 @@ class Finder:
 
                 if Finder.is_position_in_list(open_list, neighbour_new_position) == False:
                     new_neighbour = Node(current_node, neighbour_new_position)
-                    new_neighbour.g = Finder.get_distance_between_points(new_neighbour.position, start)
-                    new_neighbour.h = Finder.get_distance_between_points(new_neighbour.position, end)
+                    new_neighbour.g = Finder.get_distance_between_points(
+                        new_neighbour.position, start)
+                    new_neighbour.h = Finder.get_distance_between_points(
+                        new_neighbour.position, end)
                     new_neighbour.f = new_neighbour.g + new_neighbour.h
                     open_list.append(new_neighbour)
-                
+
                 elif Finder.is_position_in_list(open_list, neighbour_new_position) == True:
-                    node = Finder.get_node_from_position_in_list(open_list, neighbour_new_position)
+                    node = Finder.get_node_from_position_in_list(
+                        open_list, neighbour_new_position)
                     if node.g < current_node.g:
                         node.parent = current_node
-                        node.g = Finder.get_distance_between_points(node.position, start)
+                        node.g = Finder.get_distance_between_points(
+                            node.position, start)
                         node.f = node.g + node.h
 
     @staticmethod
@@ -80,8 +89,8 @@ class Finder:
     @staticmethod
     def is_position_in_list(list, position):
         for node in list:
-                if node.position == position:
-                    return True
+            if node.position == position:
+                return True
         return False
 
     @staticmethod

@@ -13,5 +13,11 @@ class MapManager:
         return data
 
     @staticmethod
+    def draw_path_with_steps(map, steps):
+        for step in steps:
+            map[step[0]][step[1]] = constants.STATUS_PATH
+        return map
+
+    @staticmethod
     def write_map(data):
         pass
