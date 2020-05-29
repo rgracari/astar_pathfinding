@@ -15,20 +15,21 @@ class Tile:
 
     def render(self, screen):
         pygame.draw.rect(screen, self.color, self.shape)
-        pygame.draw.rect(screen, constants.TILE_BORDER_COLOR, self.shape, constants.TILE_BORDER_SIZE)
-        screen.blit(self.font.render('[{}, {}]'.format(self.y // 200, self.x//200), True, constants.GREEN), (self.y + 75, self.x + 75))
+        if self.status != constants.STATUS_BLOCK:
+            pygame.draw.rect(screen, constants.TILE_BORDER_COLOR, self.shape, constants.TILE_BORDER_SIZE)
+        # screen.blit(self.font.render('[{}, {}]'.format(self.y // 200, self.x//200), True, constants.GREEN), (self.y + 75, self.x + 75))
 
     @staticmethod
     def define_color_by_status(status):
         if status == constants.STATUS_START:
-            return constants.WHITE
+            return constants.GREEN
         elif status == constants.STATUS_FINISH:
-            return constants.BLACK
-        elif status == constants.STATUS_BLOCK:
-            return constants.BROWN
-        elif status == constants.STATUS_DEFAULT:
-            return constants.LIGHT_GREY
-        elif status == constants.STATUS_PATH:
             return constants.RED
+        elif status == constants.STATUS_BLOCK:
+            return constants.WALL_GREY
+        elif status == constants.STATUS_DEFAULT:
+            return constants.WHITE
+        elif status == constants.STATUS_PATH:
+            return constants.LIGHT_BLUE
         else:
             return constants.LIGHT_GREY

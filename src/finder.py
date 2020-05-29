@@ -3,7 +3,8 @@ from node import Node
 
 
 class Finder:
-
+    # This is the A* Pathfinder i will implement others
+    # pathfinder later
     @staticmethod
     def find_path_with_astar(data):
         height = len(data)
