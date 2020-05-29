@@ -1,0 +1,19 @@
+# All status types
+STATUS_START = "S"
+STATUS_FINISH = "F"
+STATUS_BLOCK = "X"
+STATUS_DEFAULT = "O"
+
+# Colors
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+GREY = (100, 100, 100)
+LIGHT_GREY = (150, 150, 150)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+BROWN = (101, 67, 33)
+
+# Config
+TILE_BORDER_SIZE = 1
+TILE_BORDER_COLOR = BLACK
